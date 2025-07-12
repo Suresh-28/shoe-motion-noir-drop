@@ -2,13 +2,17 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, Eye, Heart, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import blackShoe from '@/assets/black-shoe.png';
+import electricBlueShoe from '@/assets/electric-blue-shoe.png';
+import goldShoe from '@/assets/gold-shoe.png';
+import ghostShoe from '@/assets/ghost-shoe.png';
 
 const showcaseItems = [
   {
     id: 1,
     name: "Velocity Noir - Classic",
     price: "$299",
-    image: "🖤",
+    image: blackShoe,
     description: "The original design in midnight black with gold accents",
     features: ["Carbon Fiber Sole", "Premium Leather", "Limited Edition"],
     gradient: "from-gray-900 to-black"
@@ -17,7 +21,7 @@ const showcaseItems = [
     id: 2,
     name: "Velocity Noir - Electric",
     price: "$319",
-    image: "⚡",
+    image: electricBlueShoe,
     description: "Electric blue variant with enhanced energy return technology",
     features: ["Boost+ Technology", "Reflective Details", "Glow Elements"],
     gradient: "from-blue-900 to-cyan-600"
@@ -26,7 +30,7 @@ const showcaseItems = [
     id: 3,
     name: "Velocity Noir - Gold",
     price: "$349",
-    image: "✨",
+    image: goldShoe,
     description: "Luxurious gold edition with hand-finished details",
     features: ["24k Gold Accents", "Italian Leather", "Collectors Edition"],
     gradient: "from-amber-600 to-yellow-500"
@@ -35,7 +39,7 @@ const showcaseItems = [
     id: 4,
     name: "Velocity Noir - Ghost",
     price: "$279",
-    image: "👻",
+    image: ghostShoe,
     description: "Minimalist white design with transparent elements",
     features: ["Ghost Protocol", "Translucent Upper", "Clean Aesthetic"],
     gradient: "from-gray-100 to-white"
@@ -104,7 +108,7 @@ const Showcase = () => {
                     repeat: Infinity,
                   }}
                 >
-                  {showcaseItems[currentIndex].image}
+                  <img src={showcaseItems[currentIndex].image} alt={showcaseItems[currentIndex].name} className="w-32 h-32 object-contain" />
                 </motion.div>
                 
                 {/* Floating Elements */}
@@ -178,7 +182,7 @@ const Showcase = () => {
                 {showcaseItems.map((item, index) => (
                   <div key={item.id} className="w-full flex-shrink-0 p-6">
                     <div className={`w-full h-80 rounded-2xl bg-gradient-to-br ${item.gradient} p-6 flex flex-col items-center justify-center text-center`}>
-                      <div className="text-6xl mb-4">{item.image}</div>
+                      <img src={item.image} alt={item.name} className="w-16 h-16 object-contain mb-4" />
                       <h3 className="text-xl font-bold text-white mb-2">{item.name}</h3>
                       <p className="text-lg font-semibold text-white/90">{item.price}</p>
                     </div>
@@ -240,7 +244,7 @@ const Showcase = () => {
               onClick={() => setCurrentIndex(index)}
             >
               <div className={`w-full h-48 rounded-xl bg-gradient-to-br ${item.gradient} mb-4 flex items-center justify-center relative overflow-hidden`}>
-                <div className="text-4xl">{item.image}</div>
+                <img src={item.image} alt={item.name} className="w-12 h-12 object-contain" />
                 
                 {/* Hover Overlay */}
                 <motion.div

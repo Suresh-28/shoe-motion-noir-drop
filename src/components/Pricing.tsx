@@ -2,6 +2,9 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Check, Star, Zap, Crown, ShoppingCart, Heart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import electricIcon from '@/assets/electric-icon.png';
+import blackShoe from '@/assets/black-shoe.png';
+import goldShoe from '@/assets/gold-shoe.png';
 
 const pricingPlans = [
   {
@@ -11,7 +14,7 @@ const pricingPlans = [
     originalPrice: 349,
     badge: 'Popular',
     color: 'primary',
-    icon: '🖤',
+    icon: blackShoe,
     features: [
       'Carbon Fiber Sole Technology',
       'Premium Leather Upper',
@@ -29,7 +32,7 @@ const pricingPlans = [
     originalPrice: 369,
     badge: 'Tech Edition',
     color: 'secondary',
-    icon: '⚡',
+    icon: electricIcon,
     features: [
       'Everything in Classic',
       'Boost+ Energy Technology',
@@ -47,7 +50,7 @@ const pricingPlans = [
     originalPrice: 499,
     badge: 'Limited Edition',
     color: 'accent',
-    icon: '✨',
+    icon: goldShoe,
     features: [
       'Everything in Electric',
       '24k Gold Accents',
@@ -136,7 +139,9 @@ const Pricing = () => {
 
                 {/* Header */}
                 <div className="text-center mb-6">
-                  <div className="text-4xl mb-4">{plan.icon}</div>
+                  <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                    <img src={plan.icon} alt={`${plan.name} icon`} className="w-12 h-12 object-contain" />
+                  </div>
                   <h3 className="text-2xl font-bold text-foreground mb-2">{plan.name}</h3>
                   
                   <div className="space-y-1">

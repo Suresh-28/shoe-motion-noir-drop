@@ -2,13 +2,17 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { Star, Quote, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import runnerAvatar from '@/assets/runner-avatar.png';
+import designerAvatar from '@/assets/designer-avatar.png';
+import strengthIcon from '@/assets/strength-icon.png';
+import executiveAvatar from '@/assets/executive-avatar.png';
 
 const testimonials = [
   {
     id: 1,
     name: "Alex Chen",
     role: "Professional Runner",
-    avatar: "🏃‍♂️",
+    avatar: runnerAvatar,
     rating: 5,
     quote: "These shoes revolutionized my training. The energy return is incredible, and after 500+ miles, they still feel brand new. Worth every penny.",
     highlight: "500+ miles"
@@ -17,7 +21,7 @@ const testimonials = [
     id: 2,
     name: "Sarah Williams",
     role: "Fashion Designer",
-    avatar: "👩‍🎨",
+    avatar: designerAvatar,
     rating: 5,
     quote: "Finally, a shoe that combines cutting-edge performance with stunning aesthetics. The design details are absolutely exquisite.",
     highlight: "Stunning aesthetics"
@@ -26,7 +30,7 @@ const testimonials = [
     id: 3,
     name: "Marcus Johnson",
     role: "Fitness Coach",
-    avatar: "💪",
+    avatar: strengthIcon,
     rating: 5,
     quote: "I've tested hundreds of athletic shoes. The Velocity Noir's technology and comfort level is unmatched. My clients love them too.",
     highlight: "Unmatched comfort"
@@ -35,7 +39,7 @@ const testimonials = [
     id: 4,
     name: "Emma Rodriguez",
     role: "Tech Executive",
-    avatar: "👩‍💼",
+    avatar: executiveAvatar,
     rating: 5,
     quote: "Perfect for my busy lifestyle. From boardroom to gym, these shoes adapt seamlessly. The quality is exceptional.",
     highlight: "Exceptional quality"
@@ -101,9 +105,12 @@ const Testimonials = () => {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.5 }}
-              className="text-6xl mb-6 mt-8"
             >
-              {testimonials[currentIndex].avatar}
+              <img 
+                src={testimonials[currentIndex].avatar} 
+                alt={testimonials[currentIndex].name}
+                className="w-24 h-24 rounded-full object-cover mx-auto mb-6 mt-8"
+              />
             </motion.div>
 
             {/* Quote */}
