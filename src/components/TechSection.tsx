@@ -1,6 +1,8 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { Layers, Cpu, Zap, Shield, ArrowRight } from 'lucide-react';
+import velocityNoirShoe from '@/assets/velocity-noir-shoe.png';
+import { useBackgroundRemoval } from '@/hooks/useBackgroundRemoval';
 
 const techFeatures = [
   {
@@ -28,6 +30,7 @@ const techFeatures = [
 const TechSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.3 });
+  const { processedImage, isProcessing } = useBackgroundRemoval(velocityNoirShoe);
 
   return (
     <section className="section-padding bg-muted/10 relative overflow-hidden">
@@ -81,11 +84,19 @@ const TechSection = () => {
 
                 {/* Central Icon */}
                 <motion.div
-                  className="text-6xl"
+                  className="w-48 h-48 flex items-center justify-center"
                   animate={{ rotate: [0, 5, -5, 0] }}
                   transition={{ duration: 4, repeat: Infinity }}
                 >
-                  👟
+                  <img 
+                    src={processedImage} 
+                    alt="Velocity Noir Technology"
+                    className="w-40 h-40 object-contain"
+                    style={{
+                      filter: isProcessing ? 'blur(2px)' : 'none',
+                      transition: 'filter 0.3s ease'
+                    }}
+                  />
                 </motion.div>
 
                 {/* Tech Icons */}

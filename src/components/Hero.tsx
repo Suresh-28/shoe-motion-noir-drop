@@ -2,11 +2,13 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Sparkles, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import velocityNoirShoe from '@/assets/velocity-noir-shoe.png';
+import { useBackgroundRemoval } from '@/hooks/useBackgroundRemoval';
 
 const Hero = () => {
   const { scrollYProgress } = useScroll();
   const y = useTransform(scrollYProgress, [0, 1], ['0%', '50%']);
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const { processedImage, isProcessing } = useBackgroundRemoval(velocityNoirShoe);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -95,7 +97,7 @@ const Hero = () => {
             className="relative mb-12"
           >
             <motion.div
-              className="w-80 h-80 mx-auto relative"
+              className="w-96 h-96 mx-auto relative"
               animate={{
                 rotateY: [0, 10, -10, 0],
                 y: [0, -10, 0],
@@ -108,11 +110,15 @@ const Hero = () => {
             >
               <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center border border-primary/30 animate-glow-pulse">
                 <motion.img
-                  src={velocityNoirShoe}
+                  src={processedImage}
                   alt="Velocity Noir Premium Shoe"
-                  className="w-48 h-48 object-contain"
+                  className="w-64 h-64 object-contain"
                   animate={{ scale: [1, 1.05, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
+                  style={{
+                    filter: isProcessing ? 'blur(2px)' : 'none',
+                    transition: 'filter 0.3s ease'
+                  }}
                 />
               </div>
               
