@@ -1,6 +1,7 @@
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { ArrowRight, Sparkles, Zap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import velocityNoirShoe from '@/assets/velocity-noir-shoe.png';
 
 const Hero = () => {
   const { scrollYProgress } = useScroll();
@@ -106,13 +107,13 @@ const Hero = () => {
               }}
             >
               <div className="w-full h-full bg-gradient-to-br from-primary/20 to-secondary/20 rounded-full flex items-center justify-center border border-primary/30 animate-glow-pulse">
-                <motion.div
-                  className="text-6xl font-bold text-primary"
+                <motion.img
+                  src={velocityNoirShoe}
+                  alt="Velocity Noir Premium Shoe"
+                  className="w-48 h-48 object-contain"
                   animate={{ scale: [1, 1.05, 1] }}
                   transition={{ duration: 2, repeat: Infinity }}
-                >
-                  👟
-                </motion.div>
+                />
               </div>
               
               {/* Floating Labels */}
