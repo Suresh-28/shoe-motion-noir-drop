@@ -2,6 +2,8 @@ import { motion, useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, Eye, Heart, ShoppingCart } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useCart } from '@/contexts/CartContext';
+import { useNavigate } from 'react-router-dom';
 import blackShoe from '@/assets/black-shoe.png';
 import electricBlueShoe from '@/assets/electric-blue-shoe.png';
 import goldShoe from '@/assets/gold-shoe.png';
@@ -12,6 +14,7 @@ const showcaseItems = [
     id: 1,
     name: "Velocity Noir - Classic",
     price: "$299",
+    priceNumber: 299,
     image: blackShoe,
     description: "The original design in midnight black with gold accents",
     features: ["Carbon Fiber Sole", "Premium Leather", "Limited Edition"],
